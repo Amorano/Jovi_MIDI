@@ -1,5 +1,5 @@
 [project]
-name = "Jovi_MIDI"
+name = "jovi_midi"
 description = "Read and Process data from MIDI devices inside of ComfyUI."
 version = "1.0.0"
 license = { file = "LICENSE" }

@@ -39,7 +39,7 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 * `MIDI MESSAGE` Processes MIDI messages received from an external MIDI controller or device
 * `MIDI FILTER` (advanced filter) to select messages from MIDI streams and devices
 * `MIDI FILTER EZ` simpler interface to filter single messages from MIDI streams and devices
-* `MIDI LOADER` For loading existing MIDI files for message processing
+* `MIDI LOADER` Load MIDI files and convert their events into a ComfyUI parameter list
 
 ## UPDATES
 
