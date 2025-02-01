@@ -43,6 +43,17 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 
 ## UPDATES
 
+**2024/02/01** @1.0.1:
+* cleanup pyproject for registry
+* patched `MIDI FILTER EZ` to work for all filters not just the first found
+* Filter ranges are:
+* * Single numbers: "1, 2" (equals)
+* * Closed ranges: "5-10" (between inclusive)
+* * Open ranges: "-100" (less than or equal to 100)
+* * Open ranges: "50-" (greater than or equal to 50)
+* * 1, 5-10, 2
+* * * would check == 1, == 2 and 5 <= x <= 10
+
 **2024/02/01** @1.0.0:
 * intial breakout from Jovimetrix
 
