@@ -1,2 +1,70 @@
-# Jovi_Midi
-Read and Process data from MIDI devices inside of ComfyUI
+<div align="center">
+
+<picture>
+  <source srcset="https://github.com/Amorano/Jovi_MIDI/blob/master/res/Jovi_MIDI.png">
+  <img alt="ComfyUI Nodes for Reading and Processing data from MIDI devices" width="256" height="256">
+</picture>
+
+</div>
+
+<div align="center">
+
+<a href="https://github.com/comfyanonymous/ComfyUI">COMFYUI</a> Nodes for Reading and Processing data from MIDI devices
+
+</div>
+
+<div align="center">
+
+![KNIVES!](https://badgen.net/github/open-issues/Amorano/Jovi_MIDI)
+![FORKS!](https://badgen.net/github/forks/Amorano/Jovi_MIDI)
+
+</div>
+
+<!---------------------------------------------------------------------------->
+
+# SPONSORSHIP
+
+Please consider sponsoring me if you enjoy the results of my work, code or documentation or otherwise. A good way to keep code development open and free is through sponsorship.
+
+<div align="center">
+
+&nbsp;|&nbsp;|&nbsp;|&nbsp;
+-|-|-|-
+[![BE A GITHUB SPONSOR ❤️](https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA)](https://github.com/sponsors/Amorano) | [![DIRECTLY SUPPORT ME VIA PAYPAL](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.com/paypalme/onarom) | [![PATREON SUPPORTER](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://www.patreon.com/joviex) | [![SUPPORT ME ON KO-FI!](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/alexandermorano)
+</div>
+
+## HIGHLIGHTS
+
+* `MIDI READER` Captures MIDI messages from an external MIDI device or controller
+* `MIDI MESSAGE` Processes MIDI messages received from an external MIDI controller or device
+* `MIDI FILTER` (advanced filter) to select messages from MIDI streams and devices
+* `MIDI FILTER EZ` simpler interface to filter single messages from MIDI streams and devices
+* `MIDI LOADER` For loading existing MIDI files for message processing
+
+## UPDATES
+
+**2024/02/01** @1.0.0:
+* intial breakout from Jovimetrix
+
+# INSTALLATION
+
+## COMFYUI MANAGER
+
+If you have [ComfyUI Manager](https://github.com/ltdrdata/ComfyUI-Manager) installed, simply search for Jovi_MIDI and install from the manager's database.
+
+## MANUAL INSTALL
+Clone the repository into your ComfyUI custom_nodes directory. You can clone the repository with the command:
+```
+git clone https://github.com/Amorano/Jovi_MIDI.git
+```
+You can then install the requirements by using the command:
+```
+.\python_embed\python.exe -s -m pip install -r requirements.txt
+```
+If you are using a <code>virtual environment</code> (<code><i>venv</i></code>), make sure it is activated before installation. Then install the requirements with the command:
+```
+pip install -r requirements.txt
+```
+# WHERE TO FIND ME
+
+You can find me on [![DISCORD](https://dcbadge.vercel.app/api/server/62TJaZ3Z5r?style=flat-square)](https://discord.gg/62TJaZ3Z5r).

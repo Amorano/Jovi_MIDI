@@ -1,0 +1,7 @@
+{
+    "MIDI FILTER (JOV_MIDI)": "Provides advanced filtering capabilities for MIDI messages based on various criteria, including MIDI mode (such as note on or note off), MIDI channel, control number, note number, value, and normalized value",
+    "MIDI FILTER EZ (JOV_MIDI)": "Filter MIDI messages based on various criteria, including MIDI mode (such as note on or note off), MIDI channel, control number, note number, value, and normalized value",
+    "MIDI LOADER (JOV_MIDI)": "Load MIDI files and convert their events into a ComfyUI parameter list",
+    "MIDI MESSAGE (JOV_MIDI)": "Processes MIDI messages received from an external MIDI controller or device",
+    "MIDI READER (JOV_MIDI)": "Captures MIDI messages from an external MIDI device or controller"
+}

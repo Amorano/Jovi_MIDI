@@ -1,0 +1,18 @@
+[project]
+name = "Jovi_MIDI"
+description = "Read and Process data from MIDI devices inside of ComfyUI."
+version = "1.0.0"
+license = { file = "LICENSE" }
+dependencies = [
+    "aenum",
+    "loguru",
+    "mido[ports-rtmidi]",
+]
+
+[project.urls]
+Repository = "https://github.com/Amorano/Jovi_MIDI"
+
+[tool.comfy]
+PublisherId = "amorano"
+DisplayName = "Jovi_MIDI"
+Icon = "https://raw.githubusercontent.com/Amorano/Jovimetrix-examples/master/res/logo-jovimetrix.png"
