@@ -134,10 +134,21 @@ class MIDIMessage:
 # === CLASS ===
 # ==============================================================================
 
-class MIDIMessageNode(JOVBaseNode):
-    NAME = "MIDI MESSAGE"
+class MIDIHeader(JOVBaseNode):
     RETURN_TYPES = ('JMIDIMSG', 'BOOLEAN', 'INT', 'INT', 'INT', 'FLOAT', 'FLOAT', )
     RETURN_NAMES = ("MIDI", "ON", "CHANNEL", "CONTROL", "NOTE", "VALUE", "NORMALIZE", )
+    OUTPUT_TOOLTIPS = (
+        "MIDI bus that contains the full MIDI message",
+        "The state of the note -- either `ON` or `OFF`",
+        "MIDI channel sent in the MIDI message",
+        "The control number sent in the MIDI message",
+        "Note value (0-127) sent in the MIDI message",
+        "If this was a control messge, the control value (0-127) sent in the MIDI message",
+        "If this was a control messge, the control value normalized to 0-1",
+    )
+
+class MIDIMessageNode(MIDIHeader):
+    NAME = "MIDI MESSAGE"
     SORT = 10
     DESCRIPTION = """
 Processes MIDI messages received from an external MIDI controller or device. It accepts MIDI messages as input and returns various attributes of the MIDI message, including whether the message is valid, the MIDI channel, control number, note number, value, and normalized value. This node is useful for integrating MIDI control into creative projects, allowing users to respond to MIDI input in real-time.
@@ -164,10 +175,8 @@ Processes MIDI messages received from an external MIDI controller or device. It 
             pbar.update_absolute(idx)
         return list(zip(*results))
 
-class MIDIReaderNode(JOVBaseNode):
+class MIDIReaderNode(MIDIHeader):
     NAME = "MIDI READER"
-    RETURN_TYPES = ('JMIDIMSG', 'BOOLEAN', 'INT', 'INT', 'INT', 'FLOAT', 'FLOAT',)
-    RETURN_NAMES = ("MIDI", "ON", "CHANNEL", "CONTROL", "NOTE", "VALUE", "NORMALIZE",)
     SORT = 5
     DEVICES = midi_device_names()
     CHANGED = False
@@ -234,6 +243,10 @@ class MIDIFilterNode(JOVBaseNode):
     NAME = "MIDI FILTER"
     RETURN_TYPES = ("JMIDIMSG", "BOOLEAN", )
     RETURN_NAMES = ("MIDI", "TRIGGER",)
+    OUTPUT_TOOLTIPS = (
+        "The amount of blurriness (0->1.0) of the input image.",
+        "The amount of blurriness (0->1.0) of the input image.",
+    )
     SORT = 20
     EPSILON = 1e-6
     DESCRIPTION = """
@@ -334,6 +347,10 @@ class MIDIFilterEZNode(JOVBaseNode):
     NAME = "MIDI FILTER EZ"
     RETURN_TYPES = ("JMIDIMSG", "BOOLEAN", )
     RETURN_NAMES = ("MIDI", "TRIGGER",)
+    OUTPUT_TOOLTIPS = (
+        "The amount of blurriness (0->1.0) of the input image.",
+        "The amount of blurriness (0->1.0) of the input image.",
+    )
     SORT = 25
     DESCRIPTION = """
 Filter MIDI messages based on various criteria, including MIDI mode (such as note on or note off), MIDI channel, control number, note number, value, and normalized value. This node is useful for processing MIDI input and selectively passing through only the desired messages. It helps simplify MIDI data handling by allowing you to focus on specific types of MIDI events.

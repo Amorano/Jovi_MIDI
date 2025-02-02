@@ -29,5 +29,5 @@ Issues = "https://github.com/Amorano/Jovi_MIDI/issues"
 
 [tool.comfy]
 PublisherId = "amorano"
-DisplayName = "Jovi_MIDI"
-Icon = "https://avatars.githubusercontent.com/u/225178?s=48&v=4"
+DisplayName = "Jovi MIDI"
+Icon = "https://raw.githubusercontent.com/Amorano/Jovimetrix-examples/refs/heads/master/res/logo-jovi_midi.png"

@@ -13,38 +13,7 @@ import numpy as np
 from loguru import logger
 
 # ==============================================================================
-# === TYPE ===
-# ==============================================================================
-
-class AnyType(str):
-    """AnyType input wildcard trick taken from pythongossss's:
-
-    https://github.com/pythongosssss/ComfyUI-Custom-Scripts
-    """
-    def __ne__(self, __value: object) -> bool:
-        return False
-
-JOV_TYPE_ANY = AnyType("*")
-
-# want to make explicit entries; comfy only looks for single type
-JOV_TYPE_COMFY = "BOOLEAN,FLOAT,INT"
-JOV_TYPE_VECTOR = "VEC2,VEC3,VEC4,VEC2INT,VEC3INT,VEC4INT,COORD2D"
-JOV_TYPE_NUMBER = f"{JOV_TYPE_COMFY},{JOV_TYPE_VECTOR}"
-JOV_TYPE_IMAGE = "IMAGE,MASK"
-JOV_TYPE_FULL = f"{JOV_TYPE_NUMBER},{JOV_TYPE_IMAGE}"
-
-JOV_TYPE_COMFY = JOV_TYPE_ANY
-JOV_TYPE_VECTOR = JOV_TYPE_ANY
-JOV_TYPE_NUMBER = JOV_TYPE_ANY
-JOV_TYPE_IMAGE = JOV_TYPE_ANY
-JOV_TYPE_FULL = JOV_TYPE_ANY
-
-JOV_TYPE_IMAGE = JOV_TYPE_ANY
-
-TYPE_NUMBER = Union[int|float|np.ndarray]
-
-# ==============================================================================
-# === CONSTANT ===
+# === GLOBAL ===
 # ==============================================================================
 
 MIN_IMAGE_SIZE = 32

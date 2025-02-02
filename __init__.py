@@ -130,6 +130,7 @@ class JOVBaseNode:
     @classmethod
     def INPUT_TYPES(cls, prompt:bool=False, extra_png:bool=False, dynprompt:bool=False) -> dict:
         data = {
+            "optional": {},
             "required": {},
             "hidden": {
                 "ident": "UNIQUE_ID"

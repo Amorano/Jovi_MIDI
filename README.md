@@ -1,7 +1,7 @@
 <div align="center">
 
 <picture>
-  <source srcset="https://github.com/Amorano/Jovi_MIDI/blob/master/res/Jovi_MIDI.png">
+  <source srcset="https://raw.githubusercontent.com/Amorano/Jovimetrix-examples/refs/heads/master/res/logo-jovi_midi.png">
   <img alt="ComfyUI Nodes for Reading and Processing data from MIDI devices" width="256" height="256">
 </picture>
 
