@@ -43,7 +43,10 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 
 ## UPDATES
 
-**2024/02/01** @1.0.1:
+**2025/03/01** @1.0.1:
+* fixed all the year dates in readme since I have been writing 2024! =D
+
+**2025/02/01** @1.0.1:
 * cleanup pyproject for registry
 * patched `MIDI FILTER EZ` to work for all filters not just the first found
 * Filter ranges are:
@@ -54,7 +57,7 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 * * 1, 5-10, 2
 * * * would check == 1, == 2 and 5 <= x <= 10
 
-**2024/02/01** @1.0.0:
+**2025/02/01** @1.0.0:
 * intial breakout from Jovimetrix
 
 # INSTALLATION
