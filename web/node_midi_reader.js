@@ -1,7 +1,4 @@
-/**
- * File: node_midi_reader.js
- * Project: Jovi_MIDI
- */
+/**/
 
 import { app } from "../../scripts/app.js";
 

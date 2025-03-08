@@ -7,7 +7,6 @@
  ╚════╝  ╚═════╝   ╚═══╝  ╚═╝    ╚═╝     ╚═╝╚═╝╚═════╝ ╚═╝
 
          Reading and Processing data from MIDI devices
-           http://www.github.com/amorano/Jovi_Logic
 """
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]

@@ -1,5 +1,4 @@
 """
-Jovimetrix - http://www.github.com/amorano/jovimetrix
 Device -- MIDI
 
     type 0 (single track): all messages are saved in one track

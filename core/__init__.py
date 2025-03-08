@@ -1,5 +1,4 @@
 """
-Jovi_Midi - http://www.github.com/amorano/Jovi_Midi
 Core
 """
 
