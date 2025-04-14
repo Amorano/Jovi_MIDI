@@ -1,7 +1,7 @@
 [project]
 name = "jovi_midi"
 description = "Read and Process data from MIDI devices inside of ComfyUI."
-version = "1.0.2"
+version = "1.0.3"
 license = { file = "LICENSE" }
 readme = "README.md"
 authors = [{ name = "Alexander G. Morano", email = "amorano@gmail.com" }]
@@ -17,7 +17,7 @@ classifiers = [
 requires-python = ">=3.11"
 dependencies = [
     "aenum",
-    "loguru",
+    "git+https://github.com/cozy-comfyui/cozy_comfyui@main#egg=cozy_comfyui",
     "mido[ports-rtmidi]",
 ]
 

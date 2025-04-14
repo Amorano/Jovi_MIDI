@@ -1,3 +1,3 @@
 aenum
-loguru
+git+https://github.com/cozy-comfyui/cozy_comfyui@main#egg=cozy_comfyui
 mido[ports-rtmidi]

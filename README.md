@@ -43,6 +43,9 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 
 ## UPDATES
 
+**2025/04/14** @1.0.3:
+* core supports switched to [cozy_comfyui](https://github.com/cozy-comfyui/cozy_comfyui)
+
 **2025/03/08** @1.0.2:
 * removed security scanner failures for in-line http links
 

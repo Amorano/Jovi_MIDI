@@ -13,7 +13,13 @@ from math import isclose
 from queue import Queue, Empty
 from typing import List, Tuple
 
-from loguru import logger
+from cozy_comfyui import \
+    EnumConvertType, \
+    logger, \
+    deep_merge, parse_param
+
+from cozy_comfyui.node import \
+    CozyBaseNode
 
 try:
     import mido
@@ -22,9 +28,6 @@ except:
     logger.warning("MISSING MIDI SUPPORT")
 
 from comfy.utils import ProgressBar
-
-from .. import JOVBaseNode
-from . import EnumConvertType, deep_merge, parse_param
 
 # ==============================================================================
 # === ENUMERATION ===
@@ -133,7 +136,7 @@ class MIDIMessage:
 # === CLASS ===
 # ==============================================================================
 
-class MIDIHeader(JOVBaseNode):
+class MIDIHeader(CozyBaseNode):
     RETURN_TYPES = ('JMIDIMSG', 'BOOLEAN', 'INT', 'INT', 'INT', 'FLOAT', 'FLOAT', )
     RETURN_NAMES = ("MIDI", "ON", "CHANNEL", "CONTROL", "NOTE", "VALUE", "NORMALIZE", )
     OUTPUT_TOOLTIPS = (
@@ -238,7 +241,7 @@ Captures MIDI messages from an external MIDI device or controller. It monitors M
         msg = MIDIMessage(self.__note_on, self.__channel, self.__control, self.__note, self.__value)
         return msg, self.__note_on, self.__channel, self.__control, self.__note, self.__value, normalize,
 
-class MIDIFilterNode(JOVBaseNode):
+class MIDIFilterNode(CozyBaseNode):
     NAME = "MIDI FILTER"
     RETURN_TYPES = ("JMIDIMSG", "BOOLEAN", )
     RETURN_NAMES = ("MIDI", "TRIGGER",)
@@ -342,7 +345,7 @@ Provides advanced filtering capabilities for MIDI messages based on various crit
             return message, False,
         return message, True,
 
-class MIDIFilterEZNode(JOVBaseNode):
+class MIDIFilterEZNode(CozyBaseNode):
     NAME = "MIDI FILTER EZ"
     RETURN_TYPES = ("JMIDIMSG", "BOOLEAN", )
     RETURN_NAMES = ("MIDI", "TRIGGER",)
@@ -393,7 +396,7 @@ Filter MIDI messages based on various criteria, including MIDI mode (such as not
             return message, False,
         return message, True,
 
-class MIDILoader(JOVBaseNode):
+class MIDILoader(CozyBaseNode):
     NAME = "MIDI LOADER"
     RETURN_TYPES = ("JMIDIMSG", "BOOLEAN", )
     RETURN_NAMES = ("MIDI", "TRIGGER",)
