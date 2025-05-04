@@ -43,6 +43,10 @@ Please consider sponsoring me if you enjoy the results of my work, code or docum
 
 ## UPDATES
 
+**2025/05/04** @1.0.4:
+* widget definitions formatted for clarity
+* align names to Lexicon in comfy_cozy
+
 **2025/04/14** @1.0.3:
 * core supports switched to [cozy_comfyui](https://github.com/cozy-comfyui/cozy_comfyui)
 

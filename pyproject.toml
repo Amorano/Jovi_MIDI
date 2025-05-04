@@ -1,7 +1,7 @@
 [project]
 name = "jovi_midi"
 description = "Read and Process data from MIDI devices inside of ComfyUI."
-version = "1.0.3"
+version = "1.0.4"
 license = { file = "LICENSE" }
 readme = "README.md"
 authors = [{ name = "Alexander G. Morano", email = "amorano@gmail.com" }]

@@ -18,6 +18,9 @@ from cozy_comfyui import \
     logger, \
     deep_merge, parse_param
 
+from cozy_comfyui.lexicon import \
+    Lexicon
+
 from cozy_comfyui.node import \
     CozyBaseNode
 
@@ -159,14 +162,16 @@ Processes MIDI messages received from an external MIDI controller or device. It 
     @classmethod
     def INPUT_TYPES(cls) -> dict:
         d = super().INPUT_TYPES()
-        return deep_merge(d, {
+        d = deep_merge(d, {
             "optional": {
-                "MIDI": ('JMIDIMSG', {"default": None})
+                Lexicon.MIDI: ('JMIDIMSG', {
+                    "default": None})
             }
         })
+        return Lexicon._parse(d)
 
     def run(self, **kw) -> Tuple[object, bool, int, int, int, float, float]:
-        message: MIDIMessage = parse_param(kw, "MIDI", EnumConvertType.ANY, [None])
+        message: MIDIMessage = parse_param(kw, Lexicon.MIDI, EnumConvertType.ANY, [None])
         results = []
         pbar = ProgressBar(len(message))
         for idx, message in enumerate(message):
@@ -189,11 +194,13 @@ Captures MIDI messages from an external MIDI device or controller. It monitors M
     @classmethod
     def INPUT_TYPES(cls) -> dict:
         d = super().INPUT_TYPES()
-        return deep_merge(d, {
+        d = deep_merge(d, {
             "optional": {
-                "DEVICE" : (cls.DEVICES, {"default": cls.DEVICES[0] if len(cls.DEVICES) > 0 else None})
+                Lexicon.DEVICE : (cls.DEVICES, {
+                    "default": cls.DEVICES[0] if len(cls.DEVICES) > 0 else None})
             }
         })
+        return Lexicon._parse(d)
 
     @classmethod
     def IS_CHANGED(cls, **kw) -> float:
@@ -233,7 +240,7 @@ Captures MIDI messages from an external MIDI device or controller. It monitors M
                 self.__value = data.velocity
 
     def run(self, **kw) -> Tuple[MIDIMessage, bool, int, int, int, int, float]:
-        device = parse_param(kw, "DEVICE", EnumConvertType.STRING, None)[0]
+        device = parse_param(kw, Lexicon.DEVICE, EnumConvertType.STRING, None)[0]
         if device != self.__device:
             self.__q_in.put(device)
             self.__device = device
@@ -258,17 +265,26 @@ Provides advanced filtering capabilities for MIDI messages based on various crit
     @classmethod
     def INPUT_TYPES(cls) -> dict:
         d = super().INPUT_TYPES()
-        return deep_merge(d, {
+        d = deep_merge(d, {
             "optional": {
-                "MIDI": ('JMIDIMSG', {"default": None}),
-                "MODE": (MIDINoteOnFilter._member_names_, {"default": MIDINoteOnFilter.IGNORE.name}),
-                "CHANNEL": ("STRING", {"default": ""}),
-                "CONTROL": ("STRING", {"default": ""}),
-                "NOTE": ("STRING", {"default": ""}),
-                "VALUE": ("STRING", {"default": ""}),
-                "NORMALIZE": ("STRING", {"default": ""}),
+                Lexicon.MIDI: ('JMIDIMSG', {
+                    "default": None}),
+                Lexicon.MODE: (MIDINoteOnFilter._member_names_, {
+                    "default": MIDINoteOnFilter.IGNORE.name,
+                    "tooltip": "Trigger for Note On, Note off or ignore the note message"}),
+                Lexicon.CHANNEL: ("STRING", {
+                    "default": ""}),
+                Lexicon.CONTROL: ("STRING", {
+                    "default": ""}),
+                Lexicon.NOTE: ("STRING", {
+                    "default": ""}),
+                Lexicon.VALUE: ("STRING", {
+                    "default": ""}),
+                Lexicon.NORMALIZE: ("STRING", {
+                    "default": ""}),
             }
         })
+        return Lexicon._parse(d)
 
     def __filter(self, data:int, value:str) -> bool:
         """Parse strings with number ranges into number ranges.
@@ -320,13 +336,13 @@ Provides advanced filtering capabilities for MIDI messages based on various crit
         return False
 
     def run(self, **kw) -> Tuple[bool]:
-        message: MIDIMessage = kw.get("MIDI", None)
-        note_on: str = parse_param(kw, "MODE", MIDINoteOnFilter, MIDINoteOnFilter.IGNORE.name)[0]
-        chan: str = parse_param(kw, "CHANNEL", EnumConvertType.STRING, "")[0]
-        ctrl: str = parse_param(kw, "CONTROL", EnumConvertType.STRING, "")[0]
-        note: str = parse_param(kw, "NOTE", EnumConvertType.STRING, "")[0]
-        value: str = parse_param(kw, "VALUE", EnumConvertType.STRING, "")[0]
-        normal: str = parse_param(kw, "NORMALIZE", EnumConvertType.STRING, "")[0]
+        message: MIDIMessage = kw.get(Lexicon.MIDI, None)
+        note_on: str = parse_param(kw, Lexicon.MODE, MIDINoteOnFilter, MIDINoteOnFilter.IGNORE.name)[0]
+        chan: str = parse_param(kw, Lexicon.CHANNEL, EnumConvertType.STRING, "")[0]
+        ctrl: str = parse_param(kw, Lexicon.CONTROL, EnumConvertType.STRING, "")[0]
+        note: str = parse_param(kw, Lexicon.NOTE, EnumConvertType.STRING, "")[0]
+        value: str = parse_param(kw, Lexicon.VALUE, EnumConvertType.STRING, "")[0]
+        normal: str = parse_param(kw, Lexicon.NORMALIZE, EnumConvertType.STRING, "")[0]
 
         if note_on != MIDINoteOnFilter.IGNORE:
             if note_on == MIDINoteOnFilter.NOTE_ON and not message.note_on:
@@ -361,25 +377,33 @@ Filter MIDI messages based on various criteria, including MIDI mode (such as not
     @classmethod
     def INPUT_TYPES(cls) -> dict:
         d = super().INPUT_TYPES()
-        return deep_merge(d, {
+        d = deep_merge(d, {
             "optional": {
-                "MIDI": ('JMIDIMSG', {"default": None}),
-                "MODE": (MIDINoteOnFilter._member_names_, {"default": MIDINoteOnFilter.IGNORE.name}),
-                "CHANNEL": ("INT", {"default": -1, "mij": -1, "maj": 127}),
-                "CONTROL": ("INT", {"default": -1, "mij": -1, "maj": 127}),
-                "NOTE": ("INT", {"default": -1, "mij": -1, "maj": 127}),
-                "VALUE": ("INT", {"default": -1, "mij": -1, "maj": 127}),
+                Lexicon.MIDI: ('JMIDIMSG', {
+                    "default": None,
+                    "tooltip": "Trigger for Note On, Note off or ignore the note message"}),
+                Lexicon.MODE: (MIDINoteOnFilter._member_names_, {
+                    "default": MIDINoteOnFilter.IGNORE.name}),
+                Lexicon.CHANNEL: ("INT", {
+                    "default": -1, "mij": -1, "maj": 127}),
+                Lexicon.CONTROL: ("INT", {
+                    "default": -1, "mij": -1, "maj": 127}),
+                Lexicon.NOTE: ("INT", {
+                    "default": -1, "mij": -1, "maj": 127}),
+                Lexicon.VALUE: ("INT", {
+                    "default": -1, "mij": -1, "maj": 127}),
             }
         })
+        return Lexicon._parse(d)
 
     def run(self, **kw) -> Tuple[MIDIMessage, bool]:
 
-        message: MIDIMessage = parse_param(kw, "MIDI", EnumConvertType.ANY, [None])[0]
-        note_on = parse_param(kw, "MODE", MIDINoteOnFilter, MIDINoteOnFilter.IGNORE.name)[0]
-        chan = parse_param(kw, "CHANNEL", EnumConvertType.INT, -1)[0]
-        ctrl = parse_param(kw, "CONTROL", EnumConvertType.INT, -1)[0]
-        note = parse_param(kw, "NOTE", EnumConvertType.INT, -1)[0]
-        value = parse_param(kw, "VALUE", EnumConvertType.INT, -1)[0]
+        message: MIDIMessage = parse_param(kw, Lexicon.MIDI, EnumConvertType.ANY, None)[0]
+        note_on = parse_param(kw, Lexicon.MODE, MIDINoteOnFilter, MIDINoteOnFilter.IGNORE.name)[0]
+        chan = parse_param(kw, Lexicon.CHANNEL, EnumConvertType.INT, -1)[0]
+        ctrl = parse_param(kw, Lexicon.CONTROL, EnumConvertType.INT, -1)[0]
+        note = parse_param(kw, Lexicon.NOTE, EnumConvertType.INT, -1)[0]
+        value = parse_param(kw, Lexicon.VALUE, EnumConvertType.INT, -1)[0]
 
         if note_on != MIDINoteOnFilter.IGNORE:
             if note_on == MIDINoteOnFilter.NOTE_ON and not message.note_on:
